@@ -47,15 +47,15 @@ FORCE_PYOCD ?= 0
 GNWMANAGER_PATH ?= gnwmanager
 ifeq ($(FORCE_PYOCD),1)
 ifneq ($(GNWMANAGER_PATH),)
-GNWMANAGER=$(GNWMANAGER_PATH) -b pyocd
+GNWMANAGER=$(GNWMANAGER_PATH) --verbosity debug -b pyocd
 else
-GNWMANAGER= gnwmanager -b pyocd
+GNWMANAGER= gnwmanager --verbosity debug -b pyocd
 endif
 else
 ifeq ($(GNWMANAGER_PATH),)
-GNWMANAGER = gnwmanager
+GNWMANAGER = gnwmanager --verbosity debug
 else
-GNWMANAGER = $(GNWMANAGER_PATH)
+GNWMANAGER = $(GNWMANAGER_PATH) --verbosity debug
 endif
 endif
 PYTHON ?= python3
